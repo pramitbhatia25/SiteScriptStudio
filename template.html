@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;900&family=Ubuntu:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!-- CSS StyleSheets
+  <link rel="stylesheet" href="css/styles.css"> -->
+
+    <style>
+        html,
+        body {
+            font-family: "Montserrat", sans-serif;
+            overflow-x: hidden;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.5;
+            color: white;
+            font-weight: 900;
+        }
+
+        #title {
+            text-align: left;
+            background-color: {{primary_color}};
+        }
+
+        .container-fluid {
+            padding: 7% 15%;
+        }
+
+        /* Background-Colors */
+
+        .red-back {
+            background-color: {{primary_color}};
+            color: white;
+        }
+
+        .red-back .card-header {
+            color: black;
+        }
+        .white-back {
+            background-color: white;
+            color: black;
+        }
+
+        /* Navbar Styling */
+
+        .navbar {
+            padding: 0 0 4.5em;
+        }
+
+        .navbar-brand {
+            font-family: "Ubuntu";
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .nav-item {
+            padding: 0 18px;
+        }
+
+        .nav-link {
+            font-size: 1.2rem;
+            font-family: "Montserrat";
+            font-weight: 300;
+        }
+
+        #title .container-fluid {
+            padding: 3% 7% 15%;
+        }
+
+        /* Download Buttons */
+
+        .downloadbutton {
+            margin: 5% 3% 5% 0;
+        }
+
+        /* Portfolio Image */
+
+        .phone {
+            border-radius: 50%;
+            position: absolute;
+            width: 60%;
+            right: 30%;
+        }
+
+        @media (max-width: 1028px) {
+            .phone {
+                position: relative;
+                right: 0%;
+            }
+
+            #title {
+                text-align: center;
+            }
+        }
+
+        p {
+            color: #8f8f8f;
+        }
+
+        /* Middle Row */
+
+        .col-lg-4 {
+            padding: 5%;
+        }
+
+        /* Carousel */
+
+        .testimonial-text {
+            font-family: "Montserrat";
+            font-weight: 900;
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-family: "Montserrat";
+            font-weight: 900;
+            font-size: 3rem;
+            line-height: 1.5;
+        }
+
+        #testimonials {
+            background-color: white;
+            color: black;
+            padding-top: 0;
+            border-top: 5px solid {{primary_color}};
+            border-bottom: 5px solid {{primary_color}};
+        }
+
+        .section {
+            padding-top: 100px;
+        }
+
+        div.ctac h3 {
+            font-family: "Montserrat";
+            font-weight: bold;
+            font-size: 3rem;
+            color: white;
+        }
+
+        /* Footer */
+        .f {
+            margin: 20px;
+        }
+
+        #footers a {
+            text-decoration: none;
+        }
+        .arrow {
+            background-color: {{primary_color}};
+        }
+
+        .container-fluid {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .resume {
+            color: black;
+            padding-top: 50px;
+        }
+
+        .ifr {
+            margin-bottom: 100px;
+        }
+</style>
+
+</head>
+
+<body>
+
+    <section id="title">
+        <div class="red-back container-fluid">
+            <!-- Nav Bar -->
+
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="">{{name}}</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                {% if sections|length == 0 %}
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#footers">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if sections|length != 0 %}
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        {% for section in sections %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#{{section.name}}">{{section.name}}</a>
+                        </li>
+                        {% endfor %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#footers">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                {% endif %}
+            </nav>
+
+            <!-- Title -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>I am a..</h1>
+                    <h2>{{job_title}}</h2>
+                    {% if github_link|length != 0  %}
+                    <a href="{{github_link}}">
+                        <button type="button" class="btn btn-dark btn-lg downloadbutton"><i class="fab fa-github"></i>
+                            Github</button>
+                    </a>
+                    {% endif %}
+                    {% if instagram_link|length != 0  %}
+                    <a href="{{instagram_link}}">
+                        <button type="button" class="btn btn-dark btn-lg downloadbutton"><i
+                                class="fab fa-instagram"></i>Instagram</button>
+                    </a>
+                    {% endif %}
+                    {% if linkedin_link|length != 0 %}
+                    <a href="{{linkedin_link}}">
+                        <button type="button" class="btn btn-dark btn-lg downloadbutton"><i
+                                class="fab fa-linkedin"></i>Linkedin</button>
+                    </a>
+                    {% endif %}
+                    {% if youtube_link|length != 0  %}
+                    <a href="{{youtube_link}}">
+                        <button type="button" class="btn btn-dark btn-lg downloadbutton"><i class="fab fa-youtube"></i>
+                            Youtube</button>
+                    </a>
+                    {% endif %}
+                    {% if twitter_link|length != 0  %}
+                    <a href="{{twitter_link}}">
+                        <button type="button" class="btn btn-dark btn-lg downloadbutton"><i class="fab fa-twitter"></i>
+                            Twitter</button>
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="col-lg-6">
+                    <img class="phone" src="{{personal_image_link}}" alt="portfolio-image">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ALL SECTIONS -->
+
+    {% for section in sections %}
+    {% if loop.index is divisibleby 2 %}
+
+    <!-- EVEN BACKGROUND -->
+
+        <section class="red-back section" id="{{section.name}}">
+
+        <h2>{{section.name}}</h2>
+
+        <div class="row">
+            {% for project in section.desc %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>{{ project.title }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ project.description }}</p>
+                        <a href="{{project.link}}">
+                            <button type="button" class="btn btn-block btn-outline-primary">View</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </section>
+    {% else %}
+
+    <!-- ODD SECTION -->
+
+    <section class="white-back section" id="{{section.name}}">
+        <h2>{{section.name}}</h2>
+
+        <div class="row">
+            {% for project in section.desc %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>{{ project.title }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ project.description }}</p>
+                        <a href="{{project.link}}">
+                            <button type="button" class="btn btn-block btn-primary">View</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </section>
+
+    {% endif %}
+    {% endfor %}
+
+    <!-- Testimonials -->
+
+    {% if testimonials|length != 0  %}
+    <section class="red-back section" id="testimonials">
+
+        <div id="testimonial-carousel" class="carousel slide" data-slide="false">
+            <div class="carousel-inner">
+                <div class="container-fluid">
+
+                    {% for testimonial in testimonials %}
+                    {% if loop.first %}
+                    <div class="carousel-item active">
+                        <h2 class="testimonial-text">{{ testimonial.quote }}</h2>
+                        <em>{{ testimonial.speaker }}</em>
+                    </div>
+                    {% else %}
+                    <div class="carousel-item">
+                        <h2 class="testimonial-text">{{ testimonial.quote }}</h2>
+                        <em>{{ testimonial.speaker }}</em>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <a class="carousel-control-prev arrow" href="#testimonial-carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next arrow" href="#testimonial-carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+    </section>
+    {% endif %}
+
+    <!-- Footer -->
+
+    <footer id="footers">
+        {% if sections|length is divisibleby 2 and testimonials|length != 0%}
+            <div class="red-back container-fluid">
+        {%elif sections|length is divisibleby 2 and testimonials|length == 0%}
+            <div class="white-back container-fluid">
+        {%elif sections|length is not divisibleby 2 and testimonials|length == 0%}
+            <div class="red-back container-fluid">
+        {%elif sections|length is not divisibleby 2 and testimonials|length != 0%}
+            <div class="white-back container-fluid">
+        {%endif%}
+            <div class="footer">
+
+                {% if github_link|length != 0  %}
+                <a href="{{github_link}}">
+                    <i class="f fab fa-github fa-1.5x"></i>
+                </a>
+                {% endif %}
+                {% if instagram_link|length != 0  %}
+                <a href="{{instagram_link}}">
+                    <i class="f fab fa-instagram fa-1.5x"></i>
+                </a>
+                {% endif %}
+                {% if linkedin_link|length != 0  %}
+                <a href="{{linkedin_link}}">
+                    <i class="f fab fa-linkedin fa-1.5x"></i>
+                </a>
+                {% endif %}
+                {% if youtube_link|length != 0  %}
+                <a href="{{youtube_link}}">
+                    <i class="f fab fa-youtube"></i>
+                </a>
+                {% endif %}
+                {% if twitter_link|length != 0  %}
+                <a href="{{twitter_link}}">
+                    <i class="f fab fa-twitter fa-1.5x"></i>
+                </a>
+                {% endif %}
+
+                
+                <p>© Copyright 2023 {{name}}</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Resume -->
+
+    {% if resume|length != 0  %}
+    <h1 class="resume">Resume</h1>
+    <iframe class="ifr"src="../{{title}}/Resume.pdf" width="80%" height="1000px">
+    {% endif %}
+
+</body>
+
+</html>
