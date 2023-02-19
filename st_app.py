@@ -3,7 +3,7 @@ import os
 from jinja2 import Environment, FileSystemLoader
 
 st.title("Site-Script-Studio")
-st.info("""Introducing SiteSproutStudio - the one-stop solution for creating beautiful, modern
+st.info("""Introducing SiteScriptStudio - the one-stop solution for creating beautiful, modern
            and professional websites that are tailored to your specific needs. 
            With this powerful, easy-to-use website builder and a range of customizable features,
            you can create your dream website in minutes without any prior design or coding experience.""")
